@@ -1,7 +1,7 @@
 <div align="center">
 
 # ⛪ Thamar Shefah Choir Management System
-### Coptic Orthodox Diocese of Sohag — St. Mary Church
+### Coptic Orthodox Diocese of Sohag — St.George Church
 **Sacrifice of Praise • Serving Since 2000 | ذبيحة تسبيح • منذ عام 2000**
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
