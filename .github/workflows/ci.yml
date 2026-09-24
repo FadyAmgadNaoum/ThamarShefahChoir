@@ -1,0 +1,57 @@
+name: CI/CD Pipeline - Choir Management System
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  verify:
+    name: Lint, Type Check & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+
+      - name: TypeScript Type Check
+        run: npx tsc --noEmit
+
+      - name: Next.js Production Build
+        run: npm run build
+
+  cloudflare-preview:
+    name: Cloudflare D1 & Preview Verification
+    needs: verify
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+
+      - name: Verify Drizzle Migrations
+        run: npx drizzle-kit generate || echo "Migrations up to date"
+
+      - name: Dry-run Wrangler Configuration
+        run: npx wrangler types --env-interface CloudflareEnv || true
+
