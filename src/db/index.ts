@@ -196,6 +196,13 @@ export async function initLocalDb(client: ReturnType<typeof createClient>) {
       FOREIGN KEY (created_by_id) REFERENCES users(id) ON DELETE RESTRICT
     );
 
+    CREATE TABLE IF NOT EXISTS site_settings (
+      key TEXT PRIMARY KEY NOT NULL,
+      value TEXT NOT NULL,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL,
+      updated_by TEXT
+    );
+
     -- High Performance Compound Indexes for Cloudflare D1 & SQLite
     CREATE INDEX IF NOT EXISTS idx_rehearsals_quarter_date ON rehearsals(quarter_id, date);
     CREATE INDEX IF NOT EXISTS idx_attendance_user_rehearsal ON attendance(user_id, rehearsal_id);

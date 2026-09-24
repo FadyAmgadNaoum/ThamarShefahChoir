@@ -433,6 +433,23 @@ export default function NavbarApple({
                               </Link>
                             )}
 
+                            {/* Choir Profile CMS Editor */}
+                            {isAdmin && (
+                              <Link
+                                href="/admin/profile"
+                                onClick={() => setProfileMenuOpen(false)}
+                                className="p-2 rounded-xl bg-gold-50/80 hover:bg-gold-100 transition-all flex items-center justify-between text-xs font-extrabold text-burgundy border border-gold-200"
+                              >
+                                <div className="flex items-center gap-2">
+                                  <Sparkles className="w-4 h-4 text-burgundy shrink-0" />
+                                  <span>{isArabic ? "تعديل صفحة الكورال (CMS)" : "Edit Choir Profile"}</span>
+                                </div>
+                                <span className="text-[9px] bg-gold text-burgundy-950 font-bold px-1.5 py-0.5 rounded-full">
+                                  CMS
+                                </span>
+                              </Link>
+                            )}
+
                             {/* Analytics & Reports Hub */}
                             {isAdmin && (
                               <Link

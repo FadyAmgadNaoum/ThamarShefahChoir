@@ -290,3 +290,16 @@ export const songs = sqliteTable("songs", {
   activeCategoryIdx: index("idx_songs_active_category").on(table.isActive, table.category),
 }));
 
+/**
+ * SITE SETTINGS & CHOIR PROFILE CMS
+ */
+export const siteSettings = sqliteTable("site_settings", {
+  key: text("key").primaryKey(),
+  value: text("value").notNull(),
+  updatedAt: text("updated_at")
+    .notNull()
+    .default(sql`CURRENT_TIMESTAMP`),
+  updatedBy: text("updated_by"),
+});
+
+

@@ -2,16 +2,20 @@
 
 import React, { useState, useEffect } from "react";
 import NavbarApple from "@/components/apple/NavbarApple";
-import HeroApple from "@/components/apple/HeroApple";
-import BentoGridApple from "@/components/apple/BentoGridApple";
-import RoleShowcaseApple from "@/components/apple/RoleShowcaseApple";
-import FeatureGridApple from "@/components/apple/FeatureGridApple";
-import RoadmapApple from "@/components/apple/RoadmapApple";
 import FooterApple from "@/components/apple/FooterApple";
 import ExcuseSubmissionModal from "@/components/excuses/ExcuseSubmissionModal";
+import ChoirHero from "@/components/profile/ChoirHero";
+import ChoirAbout from "@/components/profile/ChoirAbout";
+import ChoirTimeline from "@/components/profile/ChoirTimeline";
+import ChoirGallery from "@/components/profile/ChoirGallery";
+import ChoirVocalSections from "@/components/profile/ChoirVocalSections";
+import ChoirFeaturedHymns from "@/components/profile/ChoirFeaturedHymns";
+import ChoirContact from "@/components/profile/ChoirContact";
+import { ChoirProfileData, defaultChoirProfile } from "@/data/choir-profile";
 
 export default function LandingPage() {
   const [lang, setLang] = useState<"ar" | "en">("ar");
+  const [profile, setProfile] = useState<ChoirProfileData>(defaultChoirProfile);
   const [isExcuseModalOpen, setIsExcuseModalOpen] = useState(false);
 
   // Authenticated Member & Active Rehearsal State
@@ -34,12 +38,26 @@ export default function LandingPage() {
   } | null>(null);
 
   const isArabic = lang === "ar";
+  const isAdmin = Boolean(
+    currentUser?.roles?.includes("ADMIN") || currentUser?.roles?.includes("SUPER_ADMIN")
+  );
 
   useEffect(() => {
     document.documentElement.dir = isArabic ? "rtl" : "ltr";
     document.documentElement.lang = isArabic ? "ar-EG" : "en";
   }, [isArabic]);
 
+  // Fetch Public Profile CMS Data
+  useEffect(() => {
+    fetch("/api/profile")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data: any) => {
+        if (data?.profile) setProfile(data.profile);
+      })
+      .catch(() => {});
+  }, []);
+
+  // Fetch Authenticated User & Rehearsal Info
   useEffect(() => {
     fetch("/api/auth/me")
       .then((r) => (r.ok ? r.json() : null))
@@ -62,35 +80,61 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-surface-canvas text-charcoal font-sans selection:bg-gold-200 selection:text-burgundy-900 relative">
+      {/* 1. Omnipresent Apple Dynamic Island Capsule */}
+      <NavbarApple
+        lang={lang}
+        toggleLanguage={toggleLanguage}
+        currentUser={currentUser}
+        activeRehearsal={activeRehearsal}
+        onOpenExcuseModal={() => setIsExcuseModalOpen(true)}
+      />
+
       <main>
-        {/* 2. Apple Cinematic Hero with 3D Tilt Card & Live Radar Simulator */}
-        <HeroApple
+        {/* 2. Choir Profile Hero with Official Logo, Motto, Verse & Action Pills */}
+        <ChoirHero
+          profile={profile}
           isArabic={isArabic}
-          currentUser={currentUser}
-          activeRehearsal={activeRehearsal}
-          onOpenExcuseModal={() => setIsExcuseModalOpen(true)}
+          isAdmin={isAdmin}
         />
 
-        {/* 3. Apple Asymmetrical Bento Grid Showcase (Vocal Stems Equalizer + GPS Radar) */}
-        <BentoGridApple
+        {/* 3. Spiritual Mission & Choir About Section */}
+        <ChoirAbout
+          profile={profile}
           isArabic={isArabic}
-          onOpenExcuseModal={() => setIsExcuseModalOpen(true)}
         />
 
-        {/* 4. Apple Keynote Deep Obsidian Role Showcase (macOS Segmented Control) */}
-        <RoleShowcaseApple isArabic={isArabic} />
-
-        {/* 5. Core 6-Pillar Feature Matrix */}
-        <FeatureGridApple
+        {/* 4. History Milestones & 25+ Years Chronicle */}
+        <ChoirTimeline
+          history={profile.history}
           isArabic={isArabic}
-          onOpenExcuseModal={() => setIsExcuseModalOpen(true)}
         />
 
-        {/* 6. Apple Editorial 10-Phase Roadmap & Technical Metrics */}
-        <RoadmapApple isArabic={isArabic} />
+        {/* 5. Photographic Archive & Interactive Lightbox Gallery */}
+        <ChoirGallery
+          gallery={profile.gallery}
+          isArabic={isArabic}
+        />
+
+        {/* 6. Four-Part Polyphonic Vocal Sections (SATB) */}
+        <ChoirVocalSections
+          sections={profile.vocalSections}
+          isArabic={isArabic}
+        />
+
+        {/* 7. Repertoire Highlights & Cantatas Player */}
+        <ChoirFeaturedHymns
+          hymns={profile.featuredHymns}
+          isArabic={isArabic}
+        />
+
+        {/* 8. Service Location, Rehearsal Schedule & Join Us */}
+        <ChoirContact
+          contact={profile.contact}
+          isArabic={isArabic}
+        />
       </main>
 
-      {/* 7. Apple Editorial Footer */}
+      {/* 9. Liturgical Footer */}
       <FooterApple isArabic={isArabic} />
 
       {/* Reusable Excuse Submission Modal */}
@@ -99,7 +143,6 @@ export default function LandingPage() {
         onClose={() => setIsExcuseModalOpen(false)}
         defaultRehearsalId={activeRehearsal?.id}
         onSuccess={() => {
-          // Re-fetch active rehearsal to reflect any updates
           fetch("/api/rehearsals/active")
             .then((r) => (r.ok ? r.json() : null))
             .then((data: any) => {
