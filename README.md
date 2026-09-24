@@ -1,8 +1,8 @@
 <div align="center">
 
-# ⛪ كورال ثمر شفاه — مطرانية سوهاج
-### Thamar Shefah Choir Management System
-**ذبيحة تسبيح • منذ عام 2000 | Sacrifice of Praise • Since 2000**
+# ⛪ Thamar Shefah Choir Management System
+### Coptic Orthodox Diocese of Sohag — St. Mary Church
+**Sacrifice of Praise • Serving Since 2000 | ذبيحة تسبيح • منذ عام 2000**
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -12,119 +12,122 @@
 [![Web Crypto API](https://img.shields.io/badge/Security-PBKDF2_SHA--512-success?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
 
 <p align="center">
-  منظومة كنسية سحابية متطورة لإدارة كورال <strong>ثمر شفاه</strong> بمطرانية السيدة العذراء مريم بسوهاج.<br/>
-  تجمع بين تسجيل الحضور الجغرافي بالـ GPS، محفظة النقاط والمكافآت، الخزينة والاشتراكات بنظام FIFO، أرشيف الترانيم والنوت الموسيقية، ولوحة التقارير والتحليلات بالذكاء الاصطناعي بتكلفة سحابية <strong>$0</strong> على باقة Cloudflare المجانية.
+  A state-of-the-art, edge-native ecclesiastical management ecosystem built for <strong>Thamar Shefah Choir</strong> at the Diocese of the Virgin Mary in Sohag.<br/>
+  Combines server-authoritative GPS attendance, a transactional points wallet, deterministic FIFO treasury, sacred hymn library with lossless R2 audio streaming, AI-powered document ingestion, and executive KPI analytics — operating at <strong>$0/month cloud cost</strong> on the Cloudflare Free Tier.
 </p>
 
-[استعراض المميزات](#-أبرز-مميزات-المنظومة) • [الهيكل التقني](#-المعمارية-التقنية) • [الأدوار والصلاحيات](#-أدوار-وصلاحيات-النظام) • [طريقة التشغيل](#-دليل-التثبيت-والتشغيل-المحلي) • [النشر السحابي](#-النشر-السحابي-cloudflare)
+[Key Features](#-key-features) • [Technical Architecture](#-technical-architecture) • [Roles & Permissions](#-roles--permissions-rbac) • [Project Roadmap](#-10-phase-project-roadmap) • [Local Setup](#-installation--local-setup) • [Cloud Deployment](#-cloudflare-edge-deployment)
 
 ---
 
 </div>
 
-## 🎨 الهوية البصرية الرسمية (Royal Liturgical Theme)
+## 🎨 Visual Identity & Design System (Royal Liturgical Theme)
 
-تم استخراج لوحة الألوان بدقة متناهية من شعار الكورال الرسمي لتحقيق هوية كنسية ملكية راقية وفق معايير `ui-ux-pro-max`:
+The color palette is derived directly from the official choir seal, following strict `ui-ux-pro-max` guidelines for solemnity, contrast, and visual hierarchy:
 
-| اللون | كود اللون (Hex) | الوصف والاستخدام في النظام |
+| Color | Hex Code | Role & Application in System |
 |---|---|---|
-| **الأحمر الملكي (Burgundy)** | `#640810` | لون الخط القبطي والعربي والشعار، الأزرار الأساسية، والعناوين البارزة. |
-| **الذهب المتألق (Radiant Gold)** | `#DCA40C` | الصليب وأوتار القيثارة، مؤشرات الـ KPIs، وحلقات التركيز والوسوم. |
-| **الخلفية العاجية (Warm Ivory)** | `#FDFBF7` | السطح العام المريح للعين في القراءة والاستخدام المطول في الكنيسة. |
-| **أسطح البطاقات (Card Surface)** | `#FFFFFF` | بطاقات زجاجية Apple Glass مع حدود ذهبية خفيفة `#EADBB6`. |
+| **Imperial Burgundy** | `#640810` | Coptic calligraphy, cross emblem, primary action buttons, brand accents, and headers. |
+| **Radiant Gold** | `#DCA40C` | Harp strings, KPI rings, active indicators, focus halos, and status badges. |
+| **Warm Ivory** | `#FDFBF7` | Ergonomic canvas background optimized for prolonged readability in low-light sanctuary settings. |
+| **Card Surface** | `#FFFFFF` | Frosted glass cards (`backdrop-blur-md`) with subtle warm gold borders (`#EADBB6`). |
 
 ---
 
-## 🌟 أبرز مميزات المنظومة
+## 🌟 Key Features
 
-### 1. 🧭 كبسولة الملاحة العائمة (Apple Dynamic Island Navbar)
-- شريط تنقل علوي زجاجي عائم يرافق المستخدم في **كل صفحات السيستم**.
-- **نظام رجوع ذكي تلقائي (Computed Back URL):** يحدد أوتوماتيكياً الوجهة الصحيحة للرجوع بنقرة واحدة دون أن يتوه المستخدم.
-- محول فوري ثنائي اللغة بالكامل (**العربية RTL** $\leftrightarrow$ **الإنجليزية LTR**).
+### 1. 🧭 Apple Dynamic Island Floating Navigation Capsule
+- Globally anchored floating navigation capsule present across **every route** in the application.
+- **Computed Back Navigation:** Intelligently derives the natural parent URL with a single click, eliminating dead ends or circular loops.
+- Instant bilingual toggle between **Arabic (RTL)** and **English (LTR)** with zero layout shift.
+- Context-sensitive shortcuts adapting dynamically to the user's role and route.
 
-### 2. 📍 محرك الحضور بالـ GPS مع التحقق السيرفري (Haversine Geofencing)
-- حساب المسافة بين هاتف المرنم وقاعة الكورال كروياً عبر السيرفر:
+### 2. 📍 Server-Authoritative Haversine GPS Geofencing
+- Evaluates spherical distance between member coordinates and church premises exclusively on the server:
   $$\text{distance} = 2r \arcsin\left(\sqrt{\sin^2\left(\frac{\Delta \phi}{2}\right) + \cos(\phi_1)\cos(\phi_2)\sin^2\left(\frac{\Delta \lambda}{2}\right)}\right)$$
-- رفض أي محاولة لتسجيل الحضور خارج النطاق الجغرافي المسموح (100 متر) أو خارج النوافذ الزمنية المحددة للبروفة.
-- تصنيف الوصول تلقائياً:
-  - `PRESENT` (حاضر في ميعادك 🟢)
-  - `LATE` (متأخر 🟡)
-  - `VERY_LATE` (تأخير كبير 🟠)
-  - `EXTREME_LATE` (تأخير حرج 🔴)
-  - `ABSENT` (غياب بدون عذر)
+- Strict **100-meter radius boundary check** with anti-spoofing verification and strict time-window enforcement.
+- Automated multi-tier arrival classification:
+  - `PRESENT` (On-time arrival 🟢)
+  - `LATE` (Standard delay 🟡)
+  - `VERY_LATE` (Significant delay 🟠)
+  - `EXTREME_LATE` (Critical delay 🔴)
+  - `ABSENT` (Unexcused absence)
 
-### 3. 📨 منظومة تقديم ومراجعة الأعذار
-- تقديم الأعذار مباشرة من هاتف المرنم (عذر غياب كامل أو عذر تأخير زمني محدد).
-- صندوق وارد إداري للمراجعة والاعتماد الفوري، مع تحويل البروفات المعتمدة تلقائياً إلى `EXCUSED_ABSENCE` وإلغاء خصم الغياب.
+### 3. 📨 Digital Excuse Management & Admin Inbox
+- Direct mobile submission for full absences or specific arrival delay windows with mandatory justifications.
+- Real-time administrative triage inbox allowing conductors to approve or reject requests.
+- Approved excuses automatically update rehearsal records to `EXCUSED_ABSENCE` and waive deduction penalties.
 
-### 4. 🏆 محرك لائحة النقاط والمحفظة الرقمية
-- قواعد نقاط تصاعدية وشرائح حسب تكرار الحالة داخل الربع السنوي (Quarters).
-- محفظة رقمية لكل مرنم توضح رصيد نقاطه، ونظام تسويات ومكافآت يدوية موثقة للمشرفين.
+### 4. 🏆 Cumulative Points Ledger & Digital Member Wallet
+- Occurrence-based escalating penalty rules evaluated per quarter (e.g., first late arrival = -1 pt, second = -2 pts, unexcused absence = -5 pts).
+- Real-time digital points balance for each singer with an immutable audit ledger.
+- Dedicated supervisor interface for documented manual point awards, bonuses, and disciplinary adjustments.
 
-### 5. 💰 الخزينة والاشتراكات بنظام التوزيع المتتالي (Deterministic FIFO)
-- توليد المطالبات الشهرية حسب فئات المرنمين (`STUDENT` 30 ج، `WORKING` 50 ج).
-- سداد أقدم شهر متأخر أولاً بشكل قطعي وآلي (FIFO) لضمان عدم تراكم المتأخرات وحماية حقوق الخزينة.
-- دفتر مالي كامل مع صلاحيات إعفاء الاشتراكات للمشرفين.
+### 5. 💰 Deterministic FIFO Dues & Subscriptions Treasury
+- Automated recurring monthly dues generation segmented by member category (`STUDENT`: 30 EGP, `WORKING`: 50 EGP).
+- **Deterministic First-In, First-Out (FIFO) debt retirement:** Incoming payments automatically clear the oldest outstanding dues first, preventing delinquency debt build-up.
+- Comprehensive collection roster, payment waiver controls, and real-time cash flow monitoring.
 
-### 6. 🎼 أرشيف الترانيم والنوت الموسيقية (Cloudflare R2 Media)
-- دعم كامل لحفظ ورفع الترانيم بـ **امتداداتها الأصلية** (`.mp3`, `.wav`, `.m4a`, `.aac`, `.flac`, `.pdf`, إلخ).
-- مشغل صوتي متقدم للبروفات يدعم التقطيع الجزئي (`HTTP 206 Partial Content`) لسرعة التقديم والتأخير دون استهلاك باقة الإنترنت.
-- التحكم في سرعة العرض (`0.75x`, `1.0x`, `1.25x`)، عارض النوت الموسيقية PDF، وتوجيهات الهارموني للأصوات الأربعة (سوبرانو، ألتو، تينور، باص).
-- دعم المناسبات الطقسية وإضافة قسم **"كنتاتا"** الجديد.
+### 6. 🎼 Sacred Hymn Library & Lossless Cloudflare R2 Streaming
+- Preserves **original file extensions** (`.mp3`, `.wav`, `.m4a`, `.aac`, `.flac`, `.pdf`, etc.) during upload and playback.
+- Edge audio streaming engine with full `HTTP 206 Partial Content` support for instant seeking without bandwidth waste.
+- Multi-speed playback controls (`0.75x`, `1.0x`, `1.25x`), embedded PDF sheet music viewer, and four-part harmony guides (Soprano, Alto, Tenor, Bass).
+- Full categorization by liturgical season, feast, and the newly added **"Cantata" (كنتاتا)** section.
 
-### 7. 📊 لوحة التحليلات ومؤشرات الأداء (Advanced KPIs & Reports)
-- **مؤشرات الأداء الجماعي (Collective KPIs):** مؤشر صحة الكورال الكلي (/100)، معدل الحضور العام، مؤشر الانضباط الزمني، تكافؤ وتوازن الأصوات، ونسب التحصيل المالي.
-- **تقييم الأداء الفردي (Individual KPIs):** أطول سلسلة التزام متواصلة (Streak 🔥)، ترتيب المرنم في قسمه الصوتي، وشرائح التقييم الشامل (نخبوي 🌟، ملتزم جداً 🟢، مستقر 🟡، يحتاج متابعة 🟠، حرج 🔴).
-- **كارت التقييم الفردي للمرنم:** بطاقة أداء تفاعلية يمكن تصديرها لكل مرنم على حدة.
+### 7. 📊 Executive Analytics & Multi-Level KPIs
+- **Collective Choir Health Metric (Score /100):** Real-time aggregation of attendance discipline, promptness, SATB vocal balance, and treasury collection ratios.
+- **Individual Performance Metrics:** Longest active commitment streak (🔥), vocal section rank, and tier badges (*Elite* 🌟, *Exemplary* 🟢, *Consistent* 🟡, *Needs Attention* 🟠, *At Risk* 🔴).
+- **Interactive Singer Report Cards:** High-fidelity individual progress reports ready for direct digital delivery or export.
 
-### 8. 📄 محرك تصدير التقارير متعدد الصيغ (Word, Excel, PDF)
-- **Excel (`.xlsx`):** شيت مفصل بـ 3 صفحات للمؤشرات الجماعية، كشف تقييم الأعضاء، وتحليل الأصوات.
-- **Word (`.doc`/`.docx`):** تقرير كنسي رسمي منسق بالترويسة الملكية وخانات توقيع الأب الكاهن والمايسترو وأمين الخدمة.
-- **PDF والطباعة:** جاهز للطباعة المباشرة من المتصفح بجودة عالية.
+### 8. 📄 Multi-Format Report Export Engine (Word, Excel, PDF)
+- **Excel (`.xlsx`):** Multi-tab workbook including executive KPI overviews, full member performance tables, and vocal section balance breakdowns.
+- **Word (`.docx`):** Formatted official ecclesiastical document with choir letterhead, metric summary cards, and formal signature blocks for the Parish Priest, Maestro, and General Supervisor.
+- **Print & PDF:** Browser-native high-resolution print styles with clean margins and pagination.
 
-### 9. 🤖 المعالجة والجدولة الذكية بالذكاء الاصطناعي (AI File Ingestion)
-- سحب وإفلات ملفات Word أو Excel أو PDF أو نصوص.
-- محرك ذكاء اصطناعي (Gemini 1.5 + محرك استدلالي عربي محلي) يستخرج ويصنف آلياً:
-  - 👥 الأعضاء وأرقامهم وأقسامهم الصوتية.
-  - 📅 البروفات وتواريخها ومواعيدها.
-  - 🎵 الترانيم والكلمات والمناسبات.
-  - 💰 الاشتراكات والمدفوعات.
-- شاشة معاينة تفاعلية مع الاعتماد والجدولة في السيستم بضغطة واحدة (**1-Click Commit**).
+### 9. 🤖 AI-Powered Document Ingestion (AI File Ingestion Hub)
+- Upload rosters, schedules, and hymn sheets in `.xlsx`, `.xls`, `.docx`, or `.pdf` format.
+- Hybrid ingestion engine (Google Gemini 1.5 with an offline Arabic linguistic heuristic fallback) that automatically parses and maps:
+  - 👥 Members, phone numbers, and vocal sections.
+  - 📅 Rehearsal dates, start times, and grace periods.
+  - 🎵 Hymns, liturgical categories, lyrics, and metadata.
+  - 💰 Subscription dues and payment histories.
+- Interactive diff preview allowing administrative review before executing a **1-Click Batch Commit**.
 
-### 10. 🛡️ سجل التدقيق الأمني المشدد (Super Admin Audit Trail)
-- حماية أمنية مشددة على مسار `/admin/super/*` للمشرف العام فقط.
-- توثيق غير قابل للتعديل لكافة العمليات الإدارية، الحركات المالية، وتسجيل الحضور.
-- فاحص الفروقات المتقدم (**Side-by-side JSON Diff Inspector**) مع تصدير السجل بصيغة CSV.
+### 10. 🛡️ Strict Super Admin Security Audit Trail
+- Route-level security barrier on `/admin/super/*` restricted exclusively to `SUPER_ADMIN`.
+- Append-only, tamper-evident audit logging for all administrative modifications, financial transactions, and attendance overrides.
+- **Side-by-side JSON Diff Inspector** visualizing before-and-after states, with full audit trail CSV export.
 
 ---
 
-## 🏗️ المعمارية التقنية
+## 🏗️ Technical Architecture
 
 ```mermaid
 flowchart TD
-    subgraph ClientLayer["واجهات المستخدم المتجاوبة (Next.js 14 App Router)"]
-        Landing["واجهة الهبوط والنبذة (/)"]
-        DynamicIsland["كبسولة الملاحة العائمة (NavbarApple)"]
-        MemberPortal["بوابة المرنم (حضور، نقاط، أعذار، ترانيم)"]
-        AdminDashboard["لوحة الإدارة (بروفات، أعضاء، مراجعة أعذار)"]
-        FinanceDashboard["الخزينة والاشتراكات (FIFO Ledger)"]
-        ReportsConsole["لوحة التقارير ومؤشرات الأداء والتصدير"]
-        AIImportHub["مركز الاستيراد الذكي بالـ AI"]
-        SuperAudit["سجل التدقيق الأمني (Super Admin)"]
+    subgraph ClientLayer["Client Layer (Next.js 14 App Router — React 18)"]
+        Landing["Public Landing Page (/)"]
+        DynamicIsland["Global Floating Capsule (NavbarApple)"]
+        MemberPortal["Singer Portal (Attendance, Points, Excuses, Hymns)"]
+        AdminDashboard["Admin Console (Rehearsals, Members, Excuses)"]
+        FinanceDashboard["Treasury & Dues Console (FIFO Ledger)"]
+        ReportsConsole["Analytics & KPI Export Engine"]
+        AIImportHub["AI Document Ingestion Hub"]
+        SuperAudit["Super Admin Audit Trail & Diff Inspector"]
     end
 
-    subgraph SecurityLayer["طبقة الحماية والأمان (Cloudflare Edge Middleware)"]
+    subgraph SecurityLayer["Security & Edge Middleware (Cloudflare Edge)"]
         EdgeMW["Edge Middleware (src/middleware.ts)"]
-        AuthBarrier["حاجز المراجعة (Pending Approval Gate)"]
-        PBKDF2["تشفير كلمات المرور (Web Crypto PBKDF2 SHA-512)"]
-        SessionCrypto["جلسات مشفرة بدون حالة (HMAC-SHA256 Cookies)"]
+        AuthBarrier["Onboarding Approval Barrier"]
+        PBKDF2["Web Crypto PBKDF2 SHA-512 Key Derivation"]
+        SessionCrypto["Stateless Encrypted Sessions (HMAC-SHA256 Cookies)"]
         EdgeMW --> AuthBarrier
         EdgeMW --> SessionCrypto
     end
 
-    subgraph StorageLayer["قاعدة البيانات والتخزين السحابي"]
-        D1["Cloudflare D1 (SQLite) مع 14 فهرساً مركباً"]
-        R2["Cloudflare R2 Object Storage (تخزين وبث الميديا)"]
+    subgraph StorageLayer["Data & Cloud Storage Layer"]
+        D1["Cloudflare D1 (SQLite) with 14 Compound Indexes"]
+        R2["Cloudflare R2 Object Storage (Lossless Audio & PDF Sheets)"]
     end
 
     ClientLayer --> SecurityLayer
@@ -133,86 +136,87 @@ flowchart TD
 
 ---
 
-## 👥 أدوار وصلاحيات النظام (RBAC)
+## 👥 Roles & Permissions (RBAC)
 
-| الرتبة | الرمز البرمجي | الصلاحيات والمسؤوليات |
+| Role | System Identifier | Permissions & Scope |
 |---|---|---|
-| **مرنم / عضو** | `MEMBER` | تسجيل الحضور بالـ GPS، استعراض محفظة النقاط، تقديم طلبات الأعذار، الاستماع للترانيم والنوت، ومتابعة سجل الاشتراكات. |
-| **خادم إداري** | `ADMIN` | جدولة البروفات وتحديد النطاق الجغرافي، مراجعة واعتماد طلبات الأعذار، اعتماد الأعضاء الجدد، ضبط قواعد ولائحة النقاط، رفع وإدارة الترانيم، واستعراض التقارير ومؤشرات الأداء. |
-| **أمين الخزينة** | `SUBSCRIPTION_MANAGER` | متابعة كشوفات اشتراكات الأعضاء، تسجيل الدفعات المالية وتوزيعها بنظام FIFO، وإصدار التقارير المالية. |
-| **المشرف العام** | `SUPER_ADMIN` | أعلى سلطة في المنظومة: منح وإلغاء رتب الإدارة، إعفاء الاشتراكات، الاطلاع على سجل التدقيق الأمني وفاحص الفروقات (Diff Inspector)، وتصدير الأرشيف الأمني. |
+| **Choir Member** | `MEMBER` | GPS rehearsal check-in, personal points wallet, excuse submission, hymn playback & sheet music viewing, dues payment ledger. |
+| **Admin / Servant** | `ADMIN` | Rehearsal scheduling & geofence configuration, excuse review & approval, member approval, points rule calibration, hymn uploads, analytics & exports. |
+| **Treasury Officer** | `SUBSCRIPTION_MANAGER` | Monthly dues generation, cash collection logging, FIFO payment distribution, dues waiver administration, and financial reporting. |
+| **Super Admin** | `SUPER_ADMIN` | Supreme authority: Role assignment & revocation, global subscription waivers, immutable security audit trail inspection (JSON Diff), and CSV security exports. |
 
 ---
 
-## 🗺️ خريطة المراحل الـ 10 للمشروع
+## 🗺️ 10-Phase Project Roadmap
 
-- [x] **المرحلة 1:** واجهة الهبوط، الهوية البصرية، ومحاكي الحضور.
-- [x] **المرحلة 2:** نظام المصادقة المشدد، التشفير بـ PBKDF2، وحاجز اعتماد العضوية.
-- [x] **المرحلة 3:** إدارة الأرباع السنوية وسجل ودليل الأعضاء.
-- [x] **المرحلة 4:** محرك الحضور الجغرافي بالـ GPS ومعادلة Haversine وتصنيف الوصول.
-- [x] **المرحلة 5:** منظومة تقديم ومراجعة الأعذار وتحديث سجلات الغياب.
-- [x] **المرحلة 6:** لائحة النقاط التراكمية، المحفظة الرقمية، والتسويات اليدوية.
-- [x] **المرحلة 7:** الاشتراكات الشهرية، سداد FIFO، وإدارة الخزينة والديون.
-- [x] **المرحلة 8:** أرشيف الترانيم، مشغل البروفات الصوتي السريع، وبث Cloudflare R2 بالامتدادات الأصلية.
-- [x] **المرحلة 9:** لوحة التقارير والـ KPIs، تصدير Word/Excel/PDF، المعالجة الذكية بالـ AI، وسجل التدقيق الأمني.
-- [ ] **المرحلة 10:** التدقيق اللغوي الكنسي النهائي، اختبارات مسار المستخدم الشاملة (E2E)، والنشر السحابي على Cloudflare.
+- [x] **Phase 1: Foundation & Visual Identity** — Apple design tokens, landing page, interactive attendance simulator.
+- [x] **Phase 2: Authentication & Onboarding** — Edge PBKDF2 SHA-512 hashing, RBAC, approval onboarding barrier.
+- [x] **Phase 3: Quarters & Directory** — Annual quarter management, member directory, and vocal section allocation.
+- [x] **Phase 4: GPS Attendance Engine** — Server Haversine verification, geofencing, and multi-tier arrival classifications.
+- [x] **Phase 5: Digital Excuses** — Singer excuse submissions, precedence evaluation, and conductor review inbox.
+- [x] **Phase 6: Points Ledger & Wallet** — Dynamic rule engine, quarterly occurrence tiers, and audited manual adjustments.
+- [x] **Phase 7: Treasury & Subscriptions** — Monthly dues generator, deterministic FIFO debt payoff, and financial reports.
+- [x] **Phase 8: Sacred Hymn Library & Media** — Lossless Cloudflare R2 audio streaming, original extensions, and PDF sheet viewer.
+- [x] **Phase 9: Analytics, AI Ingestion & Audit** — Executive KPIs, multi-format Word/Excel/PDF exports, AI file ingestion, and Super Admin audit log.
+- [ ] **Phase 10: Production Verification & Launch** — Liturgical terminology audit, full end-to-end integration tests, and Cloudflare production deployment.
 
 ---
 
-## 💻 دليل التثبيت والتشغيل المحلي
+## 💻 Installation & Local Setup
 
-### 1. المتطلبات الأساسية
-- تثبيت [Node.js](https://nodejs.org/) (الإصدار 18 أو أحدث).
-- مدير الحزم `npm`.
+### 1. Prerequisites
+- [Node.js](https://nodejs.org/) (v18.17+ or v20+ recommended).
+- `npm` (v9+).
 
-### 2. استنساخ المستودع وتثبيت الحزم
+### 2. Clone Repository & Install Dependencies
 ```bash
-# تثبيت الحزم والمكتبات
+git clone https://github.com/FadyAmgadNaoum/ThamarShefahChoir.git
+cd ThamarShefahChoir
 npm install
 ```
 
-### 3. إعداد متغيرات البيئة (اختياري للتطوير المحلي)
-أنشئ ملف `.env.local` في المجلد الرئيسي (المشروع يعمل تلقائياً بقيم افتراضية للتطوير):
+### 3. Environment Configuration (Optional for Local Dev)
+The application works out-of-the-box with built-in development defaults. To customize, create a `.env.local` file:
 ```env
-# رابط قاعدة البيانات المحلية (SQLite)
+# Local SQLite database path
 DATABASE_URL="file:local.db"
 
-# مفتاح سري لتوقيع الجلسات المشفرة
+# Secret key used for signing HMAC-SHA256 session cookies
 SESSION_SECRET="thamar-shefah-sacred-choir-2000-secret-key"
 
-# مفتاح Google Gemini للذكاء الاصطناعي (اختياري، يتوفر محرك محلي بديل)
+# Google Gemini API key (optional: system includes an offline heuristic fallback)
 GEMINI_API_KEY=""
 ```
 
-### 4. تشغيل خادم التطوير
+### 4. Run Development Server
 ```bash
 npm run dev
 ```
-افتح المتصفح على: **`http://localhost:3000`**
+Navigate to **`http://localhost:3000`** in your browser.
 
-### 🔑 بيانات حساب المشرف العام المدمج للتجربة:
-- **البريد الإلكتروني:** `admin@thamar-shefah.org`
-- **كلمة المرور:** `Admin123456!`
-*(يمتلك كافة الصلاحيات الأربعة بما فيها صلاحيات المشرف العام والخزينة).*
+### 🔑 Built-in Demo Credentials:
+- **Email:** `admin@thamar-shefah.org`
+- **Password:** `Admin123456!`
+*(Equipped with all four roles: Member, Admin, Treasury Officer, and Super Admin).*
 
 ---
 
-## ☁️ النشر السحابي (Cloudflare Deployment)
+## ☁️ Cloudflare Edge Deployment
 
-تم تصميم النظام ليعمل بنسبة 100% داخل حدود الباقة المجانية لـ Cloudflare ($0 Cloud Cost):
-1. **Cloudflare D1:** قاعدة بيانات موزعة عالمياً (حتى 5 ملايين قراءة مجانية يومياً).
-2. **Cloudflare R2:** تخزين الملفات الصوتية والنوت بدون أي رسوم لنقل البيانات (Zero Egress Fees).
-3. **Cloudflare Pages / Workers:** تشغيل واجهات Next.js على الحافة السحابية (Edge) بأعلى سرعة استجابة في مصر والشرق الأوسط.
+The entire architecture is strictly optimized to run within the **Cloudflare Free Tier ($0/month cloud cost)**:
+1. **Cloudflare D1:** Globally distributed serverless SQLite database (up to 5 million read requests/day free).
+2. **Cloudflare R2:** High-performance object storage with **Zero Egress Fees** for all audio and sheet music files.
+3. **Cloudflare Pages / Workers:** Runs Next.js SSR at the edge with ultra-low latency across Egypt and the Middle East.
 
-للرفع على Cloudflare:
+### Deployment Commands:
 ```bash
-# تسجيل الدخول لحساب Cloudflare
+# 1. Authenticate with Cloudflare
 npx wrangler login
 
-# تطبيق ترحيل قاعدة البيانات على D1
+# 2. Apply database migrations to remote D1
 npx wrangler d1 migrations apply thamar-shefah-db --remote
 
-# نشر المشروع بالكامل
+# 3. Build and deploy
 npm run build
 npx wrangler deploy
 ```
@@ -221,7 +225,7 @@ npx wrangler deploy
 
 <div align="center">
 
-**صلوا من أجل خدمة كورال ثمر شفاه**<br/>
-*كنيسة السيدة العذراء مريم — مطرانية سوهاج*
+**"I will sing to the Lord as long as I live; I will sing praise to my God while I have my being." (Psalm 104:33)**<br/>
+*St. Mary Coptic Orthodox Church — Diocese of Sohag*
 
 </div>
