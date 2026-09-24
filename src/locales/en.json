@@ -1,0 +1,104 @@
+{
+  "brand": {
+    "name": "Thamar Shefah Choir",
+    "motto": "Sacrifice of Praise",
+    "since": "Since 2000",
+    "church": "Virgin Mary Church",
+    "systemTitle": "Comprehensive Choir Management Platform"
+  },
+  "roles": {
+    "MEMBER": "Choir Singer (MEMBER)",
+    "ADMIN": "Choir Administrator (ADMIN)",
+    "SUBSCRIPTION_MANAGER": "Treasurer (SUBSCRIPTION_MANAGER)",
+    "SUPER_ADMIN": "General Overseer (SUPER_ADMIN)"
+  },
+  "voiceParts": {
+    "SOPRANO": "Soprano",
+    "ALTO": "Alto",
+    "TENOR": "Tenor",
+    "BASS": "Bass"
+  },
+  "memberTiers": {
+    "STUDENT": "Student",
+    "WORKING": "Working / Graduate",
+    "OTHER": "Other"
+  },
+  "memberStatus": {
+    "PENDING": "Pending Admin Approval",
+    "APPROVED": "Active Member",
+    "REJECTED": "Application Rejected"
+  },
+  "attendanceStatus": {
+    "PRESENT": "Present On Time",
+    "LATE": "Late Arrival",
+    "VERY_LATE": "Very Late Arrival",
+    "EXTREME_LATE": "Extreme Late Arrival",
+    "ABSENT": "Unexcused Absence",
+    "EXCUSED_ABSENCE": "Excused Absence",
+    "EARLY_LEAVE": "Early Departure"
+  },
+  "quarterStatus": {
+    "UPCOMING": "Upcoming",
+    "ACTIVE": "Currently Active",
+    "CLOSED": "Closed & Archived"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search...",
+    "loading": "Loading...",
+    "error": "An unexpected error occurred",
+    "success": "Operation completed successfully",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close"
+  },
+  "auth": {
+    "loginTitle": "Sign In to Member Portal",
+    "registerTitle": "Choir Membership Application",
+    "pendingMessage": "Your application is currently being reviewed by choir administrators. It will be activated shortly.",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
+    "fullNameLabel": "Full Name",
+    "phoneLabel": "Mobile Phone",
+    "voicePartLabel": "Voice Section",
+    "tierLabel": "Tier (Student / Working)",
+    "loginBtn": "Sign In",
+    "registerBtn": "Submit Application"
+  },
+  "attendance": {
+    "checkInNow": "Check In Now",
+    "checkOutNow": "Check Out",
+    "verifyingLocation": "Verifying your church coordinates on server...",
+    "insideGeofence": "Verified! You are inside the rehearsal hall.",
+    "outsideGeofence": "You are outside the permitted church geofence.",
+    "locationDenied": "Please enable browser geolocation permissions to check in.",
+    "nextRehearsal": "Next Rehearsal",
+    "attendanceRate": "Cumulative Attendance",
+    "distance": "Distance from Hall"
+  },
+  "excuses": {
+    "absenceAction": "Request Absence",
+    "delayAction": "Notify Expected Delay",
+    "reasonLabel": "Reason for Absence / Delay",
+    "expectedDelayLabel": "Expected Delay Duration (Minutes)",
+    "delayNote": "Notice: Delay notices are informational; actual classification depends on your real GPS check-in timestamp."
+  },
+  "finance": {
+    "totalDue": "Total Due",
+    "totalPaid": "Total Paid",
+    "outstanding": "Remaining Outstanding",
+    "recordPayment": "Record Payment",
+    "monthlyFee": "Monthly Dues",
+    "paidStatus": "Fully Paid",
+    "partialStatus": "Partially Paid",
+    "unpaidStatus": "Unpaid",
+    "paymentMethod": "Payment Method",
+    "paymentDate": "Payment Date"
+  }
+}
+

@@ -1,0 +1,104 @@
+{
+  "brand": {
+    "name": "كورال ثمر شفاه",
+    "motto": "ذبيحة تسبيح",
+    "since": "منذ عام 2000",
+    "church": "كنيسة السيدة العذراء مريم",
+    "systemTitle": "المنظومة الرقمية الشاملة لإدارة الكورال"
+  },
+  "roles": {
+    "MEMBER": "المرنم / العضو",
+    "ADMIN": "الخادم الإداري",
+    "SUBSCRIPTION_MANAGER": "أمين الصندوق",
+    "SUPER_ADMIN": "المشرف العام"
+  },
+  "voiceParts": {
+    "SOPRANO": "سوبرانو (Soprano)",
+    "ALTO": "آلتو (Alto)",
+    "TENOR": "تينور (Tenor)",
+    "BASS": "باص (Bass)"
+  },
+  "memberTiers": {
+    "STUDENT": "طالب / طالبة",
+    "WORKING": "خريج / عامل",
+    "OTHER": "أخرى"
+  },
+  "memberStatus": {
+    "PENDING": "تحت المراجعة والاعتماد",
+    "APPROVED": "عضو معتمد ونشط",
+    "REJECTED": "طلب مرفوض"
+  },
+  "attendanceStatus": {
+    "PRESENT": "حاضر في ميعادك",
+    "LATE": "متأخر",
+    "VERY_LATE": "تأخير كبير",
+    "EXTREME_LATE": "تأخير حرج",
+    "ABSENT": "غائب بدون عذر",
+    "EXCUSED_ABSENCE": "غياب بعذر معتمد",
+    "EARLY_LEAVE": "انصراف مبكر"
+  },
+  "quarterStatus": {
+    "UPCOMING": "قادم",
+    "ACTIVE": "نشط حالياً",
+    "CLOSED": "فصل منتهي ومغلق"
+  },
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "submit": "إرسال",
+    "confirm": "تأكيد",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "search": "بحث...",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ غير متوقع",
+    "success": "تمت العملية بنجاح",
+    "back": "رجوع",
+    "next": "التالي",
+    "close": "إغلاق"
+  },
+  "auth": {
+    "loginTitle": "تسجيل الدخول لبوابة الكورال",
+    "registerTitle": "طلب انضمام جديد للكورال",
+    "pendingMessage": "حسابك لسه تحت المراجعة من خُدام الكورال. هيتم تفعيله قريباً.",
+    "emailLabel": "البريد الإلكتروني",
+    "passwordLabel": "كلمة المرور",
+    "fullNameLabel": "الاسم ثلاثي أو رباعي",
+    "phoneLabel": "رقم الموبايل",
+    "voicePartLabel": "طبقة الصوت",
+    "tierLabel": "الفئة (طالب / عمل)",
+    "loginBtn": "دخول",
+    "registerBtn": "إرسال طلب الانضمام"
+  },
+  "attendance": {
+    "checkInNow": "سجل حضورك دلوقتي",
+    "checkOutNow": "تسجيل انصراف",
+    "verifyingLocation": "جاري التحقق من إحداثيات موقعك في الكنيسة...",
+    "insideGeofence": "تم التحقق! أنت متواجد داخل قاعة الكورال.",
+    "outsideGeofence": "أنت خارج نطاق الكنيسة المسموح به لتسجيل الحضور.",
+    "locationDenied": "يرجى السماح بصلاحية الموقع الجغرافي بالمتصفح لتتمكن من تسجيل الحضور.",
+    "nextRehearsal": "البروفة القادمة",
+    "attendanceRate": "نسبة الحضور التراكمية",
+    "distance": "المسافة من القاعة"
+  },
+  "excuses": {
+    "absenceAction": "أعتذر عن الحضور (طلب غياب)",
+    "delayAction": "هتأخر عن البروفة (إشعار تأخير)",
+    "reasonLabel": "سبب الغياب / التأخير",
+    "expectedDelayLabel": "مدة التأخير المتوقعة بالدقائق",
+    "delayNote": "تنبيه: إشعار التأخير تنبيه مسبق فقط، واحتساب الحضور الفعلي يعتمد على وقت تسجيلك عبر الـ GPS."
+  },
+  "finance": {
+    "totalDue": "إجمالي المستحق",
+    "totalPaid": "إجمالي المسدد",
+    "outstanding": "المتبقي المطلوب سداده",
+    "recordPayment": "تسجيل دفعة جديدة",
+    "monthlyFee": "الاشتراك الشهري",
+    "paidStatus": "مسدد بالكامل",
+    "partialStatus": "مسدد جزئياً",
+    "unpaidStatus": "غير مسدد",
+    "paymentMethod": "طريقة الدفع",
+    "paymentDate": "تاريخ السداد"
+  }
+}
+
