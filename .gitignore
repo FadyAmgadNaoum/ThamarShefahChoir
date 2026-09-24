@@ -19,6 +19,15 @@ local.db-shm
 # Environment variables
 .env
 .env*.local
+.env.production
+.env.staging
+.env.test
+!.env.example
+
+# Scratch and generated markdown reports
+gemini-code*
+*.tmp
+
 
 # TypeScript build info
 tsconfig.tsbuildinfo

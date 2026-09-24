@@ -161,27 +161,29 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Localhost Test Credentials Helper */}
-          <div className="mt-6 pt-4 border-t border-surface-border/80">
-            <div className="bg-gold-50/60 p-3 rounded-xl border border-gold-200 text-[11px] text-gold-950 flex flex-col gap-1.5">
-              <div className="flex items-center justify-between">
-                <span className="font-bold flex items-center gap-1 text-gold-800">
-                  <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-                  حساب المشرف العام للتجربة المحلية:
-                </span>
-                <button
-                  type="button"
-                  onClick={fillAdminCredentials}
-                  className="text-[10px] font-bold text-burgundy underline hover:text-burgundy-hover cursor-pointer"
-                >
-                  ملء تلقائي
-                </button>
+          {/* Localhost Test Credentials Helper - ONLY in development */}
+          {process.env.NODE_ENV === "development" && (
+            <div className="mt-6 pt-4 border-t border-surface-border/80">
+              <div className="bg-gold-50/60 p-3 rounded-xl border border-gold-200 text-[11px] text-gold-950 flex flex-col gap-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold flex items-center gap-1 text-gold-800">
+                    <Sparkles className="w-3.5 h-3.5 text-gold-600" />
+                    حساب المشرف العام للتجربة المحلية:
+                  </span>
+                  <button
+                    type="button"
+                    onClick={fillAdminCredentials}
+                    className="text-[10px] font-bold text-burgundy underline hover:text-burgundy-hover cursor-pointer"
+                  >
+                    ملء تلقائي
+                  </button>
+                </div>
+                <p className="font-mono text-[10px] text-charcoal">
+                  admin@thamar-shefah.org / Admin123456!
+                </p>
               </div>
-              <p className="font-mono text-[10px] text-charcoal">
-                admin@thamar-shefah.org / Admin123456!
-              </p>
             </div>
-          </div>
+          )}
 
           {/* New Member Registration Link */}
           <div className="mt-6 text-center text-xs text-charcoal-muted">

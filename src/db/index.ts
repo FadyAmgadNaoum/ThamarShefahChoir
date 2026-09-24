@@ -236,14 +236,16 @@ export async function initLocalDb(client: ReturnType<typeof createClient>) {
 
   if (adminCheck.rows.length === 0) {
     const adminId = "usr_super_admin";
-    const passwordHash = await hashPassword("Admin123456!");
+    const initialEmail = process.env.INITIAL_ADMIN_EMAIL || "admin@thamar-shefah.org";
+    const initialPassword = process.env.INITIAL_ADMIN_PASSWORD || (process.env.NODE_ENV === "production" ? crypto.randomUUID() : "Admin123456!");
+    const passwordHash = await hashPassword(initialPassword);
     await client.execute({
       sql: `INSERT INTO users (id, email, phone, full_name, password_hash, status, voice_part, tier)
             VALUES (?, ?, ?, ?, ?, 'APPROVED', 'TENOR', 'WORKING')`,
       args: [
         adminId,
-        "admin@thamar-shefah.org",
-        "01000000001",
+        initialEmail,
+        process.env.INITIAL_ADMIN_PHONE || "01000000001",
         "المشرف العام (أدمن)",
         passwordHash,
       ],
